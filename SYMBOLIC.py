@@ -22,7 +22,7 @@ def Rotation_RPY_4x4(RPY):
 
 def TransformationMatrix_Inverse(TransformationMatrix):
     R_matrix = TransformationMatrix[:3, :3]
-    p_vector = TransformationMatrix[3, :3].reshape(3, 1)
+    p_vector = TransformationMatrix[:3, 3].reshape(3, 1)
     return R_matrix.T.row_join(-R_matrix.T @ p_vector).col_join(
         p.Matrix([[0, 0, 0, 1]])
     )
